@@ -1,4 +1,4 @@
-main.o: /home/dharmendhar/gba/pallet/source/main.c \
+main.o: /home/dharmendhar/gba/radop/source/main.c \
  /opt/devkitpro/libtonc/include/tonc.h \
  /opt/devkitpro/libtonc/include/tonc_types.h \
  /opt/devkitpro/libtonc/include/tonc_memmap.h \
@@ -14,7 +14,7 @@ main.o: /home/dharmendhar/gba/pallet/source/main.c \
  /opt/devkitpro/libtonc/include/tonc_video.h \
  /opt/devkitpro/libtonc/include/tonc_nocash.h \
  /opt/devkitpro/libtonc/include/tonc_text.h \
- /home/dharmendhar/gba/pallet/include/room.h
+ /home/dharmendhar/gba/radop/include/red_ow.h
 /opt/devkitpro/libtonc/include/tonc.h:
 /opt/devkitpro/libtonc/include/tonc_types.h:
 /opt/devkitpro/libtonc/include/tonc_memmap.h:
@@ -30,4 +30,4 @@ main.o: /home/dharmendhar/gba/pallet/source/main.c \
 /opt/devkitpro/libtonc/include/tonc_video.h:
 /opt/devkitpro/libtonc/include/tonc_nocash.h:
 /opt/devkitpro/libtonc/include/tonc_text.h:
-/home/dharmendhar/gba/pallet/include/room.h:
+/home/dharmendhar/gba/radop/include/red_ow.h:

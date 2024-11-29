@@ -1,51 +1,69 @@
 #include <tonc.h>
 #include <string.h>
-#include "room.h"
+#include "red_ow.h"
 
 #define TRUE 1
 #define FALSE 0
 
-int x = 0, y = 0;
+void obj_test(OBJ_ATTR * obj);
 
-void move(int dx, int dy);
+OBJ_ATTR obj_buffer[128];
+
+OBJ_ATTR *red = &obj_buffer[0];
+
+void handleredanim(void);
+
+int fcount = 0;
 
 int main()
 {
-    memcpy(pal_bg_mem, roomPal, roomPalLen);
-    memcpy(&tile_mem[0][0], roomTiles, roomTilesLen);
-    memcpy(&se_mem[30][0], roomMap, roomMapLen);
+    int x = 0, y = 0;
 
-    REG_BG0CNT= BG_CBB(0) | BG_SBB(30) | BG_8BPP | BG_REG_32x32;
-    REG_DISPCNT= DCNT_MODE0 | DCNT_BG0;   
+    obj_set_pos(red, x, y);
+    irq_init(NULL);
+    irq_add(II_VBLANK, NULL);
+    
+    REG_DISPCNT= DCNT_OBJ | DCNT_OBJ_1D;   
 
-    int kx = 0;
-    int ky = 0;
+    memcpy(&tile_mem[4][0], red_owTiles, red_owTilesLen);
+    memcpy(pal_obj_mem, red_owPal, red_owPalLen);
 
+    oam_init(obj_buffer, 128);
+
+    obj_test(red);
     while (1)
     {
-        int i = 0;
-        while (++i % 10 + 1) 
-        {
-        key_poll();
-        kx = key_tri_horz();
-        ky = key_tri_vert();
-        if (kx || ky) break;
-        }
-        move(kx, ky);
+        fcount++;
+        VBlankIntrWait();
+        handleredanim();
+        oam_copy(oam_mem, obj_buffer, 1);
     }
     return 0;
 }
-  
-void move(int dx, int dy)
+
+void handleredanim(void)
 {
-    int i = 0;
-    while ((i = (i + 1) % 17))
+    static int ind = 2;
+    static int inc = 0;
+    if (!(fcount%12))
     {
-        x += dx;
-        y += dy;
-        vid_vsync();
-        REG_BG0HOFS = x;
-        REG_BG0VOFS = y;
+        red->attr2 = (red->attr2 & 0xfc00) | 8*ind;
+        if (inc && ind == 2) inc = 0;
+        if (!inc && ind == 0) inc = 1;
+        if (inc) ind++;
+        else ind--;
     }
 }
+
+void obj_test(OBJ_ATTR * obj)
+{
+    u32 tid = 8, pb = 0; //tileid and palbank
+    obj_set_attr(obj,
+    ATTR0_TALL,
+    ATTR1_SIZE_32,
+    ATTR2_PALBANK(pb) | tid); 
+
+    oam_copy(oam_mem, obj_buffer, 1);
+}
+  
   
