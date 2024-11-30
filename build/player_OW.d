@@ -1,4 +1,4 @@
-main.o: /home/dharmendhar/gba/radop/source/main.c \
+player_OW.o: /home/dharmendhar/gba/radop/source/player_OW.c \
  /opt/devkitpro/libtonc/include/tonc.h \
  /opt/devkitpro/libtonc/include/tonc_types.h \
  /opt/devkitpro/libtonc/include/tonc_memmap.h \
@@ -14,7 +14,6 @@ main.o: /home/dharmendhar/gba/radop/source/main.c \
  /opt/devkitpro/libtonc/include/tonc_video.h \
  /opt/devkitpro/libtonc/include/tonc_nocash.h \
  /opt/devkitpro/libtonc/include/tonc_text.h \
- /home/dharmendhar/gba/radop/include/red_ow.h \
  /home/dharmendhar/gba/radop/include/player_OW.h
 /opt/devkitpro/libtonc/include/tonc.h:
 /opt/devkitpro/libtonc/include/tonc_types.h:
@@ -31,5 +30,4 @@ main.o: /home/dharmendhar/gba/radop/source/main.c \
 /opt/devkitpro/libtonc/include/tonc_video.h:
 /opt/devkitpro/libtonc/include/tonc_nocash.h:
 /opt/devkitpro/libtonc/include/tonc_text.h:
-/home/dharmendhar/gba/radop/include/red_ow.h:
 /home/dharmendhar/gba/radop/include/player_OW.h:
