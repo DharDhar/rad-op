@@ -1,0 +1,5 @@
+1. a map system with the NPC positions and stuff baked into each map
+2. text boxes
+3. menu's if need be
+4. NPC interactions and stuff
+5. battle mockup (oh boy)
