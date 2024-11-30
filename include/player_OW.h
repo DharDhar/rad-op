@@ -1,3 +1,5 @@
+#ifndef PLAYER_OW_H
+#define PLAYER_OW_H
 
 void obj_test(OBJ_ATTR * obj);
 void handle_PLAYER_anim(void);
@@ -17,3 +19,4 @@ typedef struct overworld {
 
 extern OBJ_ATTR *red;
 extern OBJ_ATTR obj_buffer[];
+#endif
