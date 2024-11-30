@@ -66,6 +66,7 @@ int main()
 
 void handle_PLAYER_anim(void)
 {
+    //TODO: smoothen out the anims. very crude atm
     if (key_held(KEY_DOWN))
         PLAYER.firstanimframe = 0;
     else if (key_held(KEY_UP))
@@ -79,7 +80,7 @@ void handle_PLAYER_anim(void)
         PLAYER.obj->attr2 = (PLAYER.obj->attr2 & 0xfc00) | 8*((PLAYER.currentframe=1) + PLAYER.firstanimframe);
         return;
     }
-    if (!(PLAYER.animf++%12))
+    if (!(PLAYER.animf++%10))
     {
         PLAYER.obj->attr2 = (PLAYER.obj->attr2 & 0xfc00) | 8*(PLAYER.currentframe++%4 + PLAYER.firstanimframe);
     }
