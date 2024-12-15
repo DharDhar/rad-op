@@ -14,6 +14,8 @@ overworld PLAYER = {
 void handle_PLAYER_anim(void)
 {
     //TODO: smoothen out the anims. very crude atm
+
+    //checks for d-pad input to set first frame in walk cycle
     if (key_held(KEY_DOWN))
         PLAYER.firstanimframe = 0;
     else if (key_held(KEY_UP))
@@ -22,11 +24,14 @@ void handle_PLAYER_anim(void)
         PLAYER.firstanimframe = 8;
     else if (key_held(KEY_RIGHT))
         PLAYER.firstanimframe = 12;
-    else
+
+    //if d-pad isn't pressed, waits until animation comes to the "stand-still" frame
+    else if (PLAYER.currentframe%4 == 0 || PLAYER.currentframe%4 == 2)
     {
-        PLAYER.obj->attr2 = (PLAYER.obj->attr2 & 0xfc00) | 8*((PLAYER.currentframe=1) + PLAYER.firstanimframe);
+        PLAYER.animf = 0;
         return;
     }
+    //updates walk cycle frame every 10 game frames
     if (!(PLAYER.animf++%10))
     {
         PLAYER.obj->attr2 = (PLAYER.obj->attr2 & 0xfc00) | 8*(PLAYER.currentframe++%4 + PLAYER.firstanimframe);
