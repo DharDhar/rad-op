@@ -31,8 +31,8 @@ void handle_PLAYER_anim(void)
         PLAYER.animf = 0;
         return;
     }
-    //updates walk cycle frame every 10 game frames
-    if (!(PLAYER.animf++%10))
+    //updates walk cycle frame every 12 game frames
+    if (!(PLAYER.animf++%8))
     {
         PLAYER.obj->attr2 = (PLAYER.obj->attr2 & 0xfc00) | 8*(PLAYER.currentframe++%4 + PLAYER.firstanimframe);
     }
@@ -44,7 +44,8 @@ void obj_test(OBJ_ATTR * obj)
     obj_set_attr(obj,
     ATTR0_TALL,
     ATTR1_SIZE_32,
-    ATTR2_PALBANK(pb) | tid); 
+    ATTR2_BUILD(tid, pb, 0)); 
+
 
 //  oam_copy(oam_mem, obj_buffer, 1);
 }

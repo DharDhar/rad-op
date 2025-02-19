@@ -1,1 +1,1 @@
-room.o: /home/dharmendhar/gba/pallet/source/room.c
+room.o: /home/dharmendhar/gba/radop/source/room.c
